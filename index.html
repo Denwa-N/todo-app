@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- 「このhtmlファイルはhtml(HTML5)で記述していますよ」という宣言 -->
+
+<!-- ???Question??? -->
+<!-- なぜ!マークがつく？ 
+ 「これは特別な宣言ですよ」と区別するための歴史的な記法(SGMLという古い仕様の名残)-->
+
+
+<html lang="ja">
+<!-- htmlタグの中にwebページの中身全体が入る -->
+<!-- lang属性でこのページが日本語であることをブラウザや検索エンジンに伝えている -->
+
+<!-- ???Question??? -->
+<!-- 他の言語は？lang以外に指定できる？
+ 他の言語：
+ 英語 → "en" 
+ 中国語 → "zh"
+ フランス語 → "fr"
+ ドイツ語 → "de"
+ 
+ lang以外の属性：
+ dir="ltr"/"rtl" → 左書きor右書きの指定 -->
+
+
+<head>
+    <!-- headタグにはページに表示されない重要な情報を記述する -->
+
+    <meta charset="UTF-8">
+    <!-- 文字コードの設定(文字化け防止) -->
+
+    <!-- ???Question??? -->
+    <!-- なぜこれで文字化けが防げる？ 
+     UTF-8が日本語を含めたほぼ全世界の文字に対応しているため -->
+
+    <!-- ???Question??? -->
+    <!-- metaタグには他にどんな属性を指定する？ 
+     name="description" content="説明文"
+     とすることで検索エンジンで検索した結果に表示される説明文を設定できる
+     
+     name="viewport" content="width=device-width, initial-scale=1.0"
+     とすることでスマホなど別のデバイスで見た時の画面調整ができる
+     
+     http-equiv="X-UA-Compatible" content="IE=edge"
+     とすることで特定のhttoヘッダを指定可能(互換モードなど)？-->
+
+
+    <title>TODOアプリ</title>
+    <!-- titleタグにはブラウザのタブに表示したい内容を記述する -->
+
+
+    <link rel="stylesheet" href="style.css">
+    <!-- 外部のcssファイルを読み込み、ページの見た目を変更する -->
+    
+    <!-- ???Question??? -->
+    <!-- 一部だけにcssを適応したいときは？
+     クラスやIDを使用してcss内で特定の要素のみを指定することが可能
+     例： 
+     html <p class="important">大事な文</p>
+     css .important {color: red;}
+     
+     html内で直接書く方法もある
+     例：<p style="color: red;">赤文字</p> -->
+    
+    <!-- ???Question??? -->
+    <!-- relとかhrefってなんの略？役割は？
+     rel = RELationship
+     このリンクがhtmlファイルとどのような関係があるのかを表す。 
+     
+     href = Hypertext REFerence-->
+
+    <!-- ???Question??? -->
+    <!-- headタグにはmeta, title, linkタグ以外は使用しない？ 
+     <script>：
+     場所はheadでもbodyでもOK
+
+     <style>：
+     head内に直接cssを書くとき
+     
+     <base>：
+     全てのリンクの基準URLを指定する
+     
+     <noscript>：
+     JSが無効な時の表示内容 -->
+
+</head>
+
+<body>
+    <!-- 実際に画面に表示される内容をここに記述する -->
+
+    <h1>TODOアプリ</h1>
+    <!-- ページの見出しを記述する -->
+
+
+    <input id="taskInput" type="text" placeholder="やることを書く">
+    <!-- 入力欄を設ける -->
+    <!-- idはJSから操作するための識別名 -->
+
+    <!-- ???Question??? -->
+    <!-- typeはなんのために必要？
+     typeは入力欄の種類を指定するために必要
+     text：文字入力
+     number：数字のみ
+     password：パスワード(⚫︎で表示される)
+     checkbox：チェックボックス
+     date：日付
+     どんな入力が来るのかをブラウザに伝え、適切なUIを出してもらう -->
+
+
+    <button onclick="addTask()">追加</button>
+    <!-- 「追加」ボタンを用意し、クリックした時にaddTask()関数を呼び出す -->
+
+    <!-- ???Question??? -->
+    <!-- onclick以外の属性はある？ホバーした時とか
+     onmouseout：ホバーした時
+     onmouseout：マウスが離れた時
+     onkeydoun：キーボードが押された時
+     onsubmit：フォーム送信時
+     ondblclick：ダブルクリック時
+
+     JSで書く場合はhtmlから分離して以下のように記述することも可能
+     button.addEventListener('click', addTask); -->
+
+
+    <ul id="taskList"></ul>
+    <!-- ul(Unordered List)タグで箇条書きリストを作成する -->
+    <!-- addTask()関数によってリスト項目(タスク)が追加されていく -->
+
+
+    <script src="script.js"></script>
+    <!-- 外部のJSファイルを読み込み、動的な要素を追加する -->
+
+    <!-- ???Question??? -->
+    <!-- JSを定義するのはこの位置じゃないとだめ？
+     ベストなのはこの位置
+     ・htmlが全て読み込まれた後に実行するためエラーが起きにくい
+     ・ページ表示が遅くなりにくい -->
+
+    <!-- ???Question??? -->
+    <!-- cssファイルとJSファイルの読み込みの記述が異なるのが気になる
+     cssは参照するだけ＝linkiタグ
+     JSは実行もする必要がある＝scriptタグ -->
+</body>
+</html>
